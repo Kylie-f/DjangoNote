@@ -19,10 +19,12 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 from django.conf import settings
 from debug_toolbar.toolbar import debug_toolbar_urls
+#from notes import *****
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name="home.html"), name="home")
+    path('', TemplateView.as_view(template_name="home.html"), name="home"),
+    path("notes/", include("notes.urls")),
 ] + debug_toolbar_urls()
 
 
