@@ -1,4 +1,62 @@
 <!DOCTYPE html>
+{% load static %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlippiNote - Your Creative Space</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">FlippiNote</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">Pricing</a>
+            <a href="#">Contact</a>
+            <button class="login-btn">Login</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to FlippiNote</h1>
+            <p>Your space for creativity, organization, and collaboration.</p>
+            <button class="cta-btn">Get Started for Free</button>
+        </section>
+
+        <section class="features">
+            <h2>Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Organize Your Ideas</h3>
+                    <p>Create boards, notes, and lists to keep everything in one place.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Collaborate in Real-Time</h3>
+                    <p>Share your notes and boards with teammates and work together.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Stay Productive</h3>
+                    <p>Set reminders and organize your tasks to stay on track.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 FlippiNote. All Rights Reserved.</p>
+        <nav>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Help</a>
+        </nav>
+    </footer>
+</body>
+<!--
 <html>
     <head>
     </head>
@@ -10,7 +68,6 @@
         </div>
         <div class="nav-right">
         <a href="{% url 'notes' %}">+ New Note</a>
-        <!-- Make Changes here (create notes page) -->
         </div>
         </header>
         {% if user.is_authenticated %}
@@ -23,4 +80,5 @@
         {% endblock content %}
         </div>
         </body>
+-->
 </html>
