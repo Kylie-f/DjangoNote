@@ -15,13 +15,13 @@ class Note(models.Model):
         (FILE, 'File'),
         (TEXT, 'Text'),
     ]
-    note_owner = models.ForeignKey('CustomUser', on_delete=models.CASCADE, null=False, blank=False)
-    note_access = models.ManyToManyField('CustomUser', blank=True)
+    note_owner = models.ForeignKey('CustomUser', on_delete=models.CASCADE, null=False, blank=False, related_name='notes_owned')
+    note_access = models.ManyToManyField('CustomUser', blank=True, related_name='notes_accessed')
     type = models.CharField(max_length=5, choices=NOTE_TYPE_CHOICES, default=TEXT)  # True for image, False for file
     title = models.CharField(max_length=120, null=False, blank=False)
-    image = models.ImageField(upload_to='notes/images/', blank=True, null=True)
-    file = models.FileField(upload_to='notes/files/', blank=True, null=True)
-    text = models.TextField(max_length=500, blank=True, null=True)
+    image = models.ImageField(upload_to='notes/images/', blank=True)
+    file = models.FileField(upload_to='notes/files/', blank=True)
+    text = models.TextField(max_length=500, blank=True)
 
     def clean(self):
         """Custom validation to ensure either 'image', 'file', or 'text' is set based on the 'type' field."""
