@@ -131,5 +131,5 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Assuming your static files are in a "static" folder within BASE_DIR
+    BASE_DIR / "static/css/",  # Assuming your static files are in a "static" folder within BASE_DIR
 ]
