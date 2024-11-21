@@ -22,7 +22,8 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name="home.html"), name="home")
+    path('', TemplateView.as_view(template_name="home.html"), name="home"),
+    path("notes/", include("notes.urls")),
 ] + debug_toolbar_urls()
 
 

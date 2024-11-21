@@ -1,4 +1,7 @@
 from django.views.generic import TemplateView
+from .models import Note
+from django.shortcuts import render
 
-class HomePageView(TemplateView):
-    template_name = "home.html"
+def notes_list(request):
+    notes = Note.objects.all()
+    return render(request, 'notes.html', {'notes': notes})
