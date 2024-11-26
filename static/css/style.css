@@ -35,8 +35,8 @@ nav a {
 }
 
 .login-btn {
-  background-color: #fcc2e9; /* Updated button color. DID THIS CHANGE?*/ 
-  color: #fff;
+  background-color: #fcc2e9;
+  color: #000;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -62,7 +62,7 @@ nav a {
 
 .cta-btn {
   background-color: #fcc2e9; 
-  color: #fff;
+  color: #000;
   padding: 15px 30px;
   border: none;
   border-radius: 5px;
@@ -97,6 +97,55 @@ nav a {
 .feature-card h3 {
   font-size: 24px;
   margin-bottom: 10px;
+}
+
+/* Pricing Styles */
+.pricing {
+  padding: 80px 20px;
+}
+
+.pricing h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.pricing-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.pricing-card {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  width: 30%;
+  margin-bottom: 20px;
+}
+
+.pricing-card h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Contact Styles */
+.contact {
+  padding: 80px 20px;
+}
+
+.contact h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.contact-space {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  width: 30%;
+  margin-bottom: 20px;
 }
 
 /* Footer Styles */
