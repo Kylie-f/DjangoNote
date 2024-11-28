@@ -7,8 +7,8 @@ class CustomUser(AbstractUser):
     collaborators  = models.ManyToManyField('self', blank=True)
 
 class Note(models.Model):
-    owner = models.ForeignKey('CustomUser', on_delete=models.SET_NULL,null=True, blank=False)
-    access = models.ManyToManyField('CustomUser', blank=True)
+    owner = models.ForeignKey('CustomUser', on_delete=models.SET_NULL,null=True, blank=False, related_name='note_owned')
+    access = models.ManyToManyField('CustomUser', blank=True, related_name='notes_accessible')
     type = models.CharField(max_length=10, choices=[('image', 'Image'), ('file', 'File'), ('text', 'Text')], null=False, blank=False)
     title = models.CharField(max_length=120, null=False, blank=False)
     image = models.ImageField(upload_to='notes/images/', blank=True)
