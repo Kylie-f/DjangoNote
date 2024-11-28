@@ -4,49 +4,42 @@ from django.core.exceptions import ValidationError
 
 class CustomUser(AbstractUser):
     name = models.CharField(max_length=100)
-    collaborators = models.ManyToManyField('self', blank=True)
+    collaborators  = models.ManyToManyField('self', blank=True)
 
 class Note(models.Model):
-    IMAGE = 'image'
-    FILE = 'file'
-    TEXT = 'text'
-    NOTE_TYPE_CHOICES = [
-        (IMAGE, 'Image'),
-        (FILE, 'File'),
-        (TEXT, 'Text'),
-    ]
-    note_owner = models.ForeignKey('CustomUser', on_delete=models.CASCADE, null=False, blank=False, related_name='notes_owned')
-    note_access = models.ManyToManyField('CustomUser', blank=True, related_name='notes_accessed')
-    type = models.CharField(max_length=5, choices=NOTE_TYPE_CHOICES, default=TEXT)  # True for image, False for file
+    owner = models.ForeignKey('CustomUser', on_delete=models.SET_NULL,null=True, blank=False)
+    access = models.ManyToManyField('CustomUser', blank=True)
+    type = models.CharField(max_length=10, choices=[('image', 'Image'), ('file', 'File'), ('text', 'Text')], null=False, blank=False)
     title = models.CharField(max_length=120, null=False, blank=False)
     image = models.ImageField(upload_to='notes/images/', blank=True)
     file = models.FileField(upload_to='notes/files/', blank=True)
-    text = models.TextField(max_length=500, blank=True)
+    text = models.TextField(blank=True)  # Text field for 'text' type notes
 
     def clean(self):
         """Custom validation to ensure either 'image', 'file', or 'text' is set based on the 'type' field."""
-        # Check that the type is one of the three valid choices (this is automatically done by the choices argument)
-        if self.type not in [self.IMAGE, self.FILE, self.TEXT]:
-            raise ValidationError('Invalid type selected. It must be one of: image, file, or text.')
+        if self.type not in ['image', 'file', 'text']:
+            raise ValidationError("The 'type' field must be one of 'image', 'file', or 'text'.")
 
-        # Ensure that the correct fields are filled based on the 'type' field.
-        if self.type == self.IMAGE:
+        # Image validation
+        if self.type == 'image':
             if not self.image:
-                raise ValidationError('An image must be provided when type is Image.')
-            if self.file or self.text:
-                raise ValidationError('You cannot specify both an image and a file or text.')
+                raise ValidationError('An image must be provided when the note type is "image".')
+            if self.file:
+                raise ValidationError('You cannot specify both an image and a file when the note type is "image".')
 
-        elif self.type == self.FILE:
+        # File validation
+        elif self.type == 'file':
             if not self.file:
-                raise ValidationError('A file must be provided when type is File.')
-            if self.image or self.text:
-                raise ValidationError('You cannot specify both a file and an image or text.')
+                raise ValidationError('A file must be provided when the note type is "file".')
+            if self.image:
+                raise ValidationError('You cannot specify both an image and a file when the note type is "file".')
 
-        elif self.type == self.TEXT:
+        # Text validation
+        elif self.type == 'text':
             if not self.text:
-                raise ValidationError('Text must be provided when type is Text.')
+                raise ValidationError('Text content must be provided when the note type is "text".')
             if self.image or self.file:
-                raise ValidationError('You cannot specify both text and an image or file.')
+                raise ValidationError('You cannot specify both an image or a file when the note type is "text".')
 
     def save(self, *args, **kwargs):
         # Always call clean before saving
