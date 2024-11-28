@@ -5,6 +5,22 @@ from django.core.exceptions import ValidationError
 class CustomUser(AbstractUser):
     name = models.CharField(max_length=100)
     collaborators  = models.ManyToManyField('self', blank=True)
+    # Add related_name to avoid conflicts with the default User model
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='customuser_set',  # Custom reverse accessor for groups
+        blank=True,
+        help_text='The groups this user belongs to.',
+        related_query_name='customuser'
+    )
+
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='customuser_set',  # Custom reverse accessor for user_permissions
+        blank=True,
+        help_text='Specific permissions for this user.',
+        related_query_name='customuser'
+    )
 
 class Note(models.Model):
     owner = models.ForeignKey('CustomUser', on_delete=models.SET_NULL,null=True, blank=False, related_name='note_owned')
