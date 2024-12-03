@@ -243,17 +243,21 @@ footer nav a {
   background-color: #e6aed4;
 }
 
-/* Notes Dashboard */
 .notes-dashboard {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  position: relative;
+  padding: 20px;
+  min-height: 500px;
+  border: none;
+  z-index: 9;
 }
 
 .note-card {
   background-color: #fdfd96; /* Sticky note color */
-  border: 1px solid #f0e68c;
-  border-radius: 5px;
+  border: 1px solid #f0e68c; /* Border around sticky note */
+  border-radius: 5px; /* Rounded corners */
   padding: 15px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   width: 200px;
@@ -263,12 +267,21 @@ footer nav a {
   justify-content: center;
   align-items: center;
   text-align: center;
+  cursor: grab;
+  position: absolute; 
+  z-index: 5; /* Default z-index */
 }
+
+.note-card.dragging {
+  z-index: 9999; /* Higher z-index when dragging */
+}
+
 
 .note-card p {
   font-size: 14px;
   color: #333;
 }
+
 
 /* Sticky note colors */
 .sticky-note-color-1 {
@@ -354,4 +367,22 @@ footer nav a {
   width: 100px;
   height: auto;
   float: left;
+}
+
+.banner-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+}
+
+.banner-content {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.banner-content img {
+  width: 20%;
+  height: auto;
+  flex-shrink: 0;
 }

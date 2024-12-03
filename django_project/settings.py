@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str("SECRET_KEY") #CREATE NEW KEY BEFORE PRODUCTION
+SECRET_KEY = 'django-insecure-r(g19&dg&j2+f=-$hpfgp)@xb6&lybe#mnal%xmo!n@v@7xflx'#env.str("SECRET_KEY") #CREATE NEW KEY BEFORE PRODUCTION
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=False)
+DEBUG = True #env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = [] #ADD HOST BEFORE PROD
 
@@ -84,7 +84,13 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+#DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
 
 
 # Password validation
