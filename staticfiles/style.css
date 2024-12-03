@@ -344,3 +344,8 @@ footer nav a {
   transform: scale(1.05);
   background-color: #e0e0e0; /* highlight effect */
 }
+
+.image{
+  width: 200px;
+  height: auto;
+}
