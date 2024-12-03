@@ -22,12 +22,12 @@
     
         <div class="notes-dashboard" id="notes-dashboard">
             {% for note in notes %}
-            <div class="note-card" class="note-card" id="note-card-{{ note.id }}">
+            <div class="note-card" id="note-card-{{ note.id }}">
                 <p>{{ note.body }}</p>
             </div>
             {% endfor %}
         </div>
-    </main>
+    </main>    
     
 </div>
 {% endblock content %}
