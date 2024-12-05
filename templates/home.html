@@ -1,16 +1,31 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 <main>
     <section class="hero">
         <h1>Welcome to FlippiNote</h1>
         <p>Your space for creativity, organization, and collaboration.</p>
+
         {% if user.is_authenticated %}
-        <button class="cta-btn"><a href="{% url 'notes' %}">View My Notes</a></button>
+        <button class="cta-btn">
+          <a href="{% url 'notes' %}">View My Notes</a>
+        </button>
         {% else %}
-        <button class="cta-btn"><a href="{% url 'signup' %}">Get Started for Free</a></button>
+        <button class="cta-btn">
+          <a href="{% url 'signup' %}">Get Started for Free</a>
+        </button>
         {% endif %}
+
     </section>
+
+    <div class="banner-container">
+        <p>Some of our customers!</p>
+        <div class="banner-content">
+            <img src="{% static 'img/logo.png' %}" alt="Logo" class="image">
+            <img src="{% static 'img/logo.png' %}" alt="Logo" class="image">
+            <img src="{% static 'img/logo.png' %}" alt="Logo" class="image">
+        </div>
+      </div>
 
     <section class="features">
         <h2>Features</h2>
@@ -26,16 +41,6 @@
             <div class="feature-card">
                 <h3>Stay Productive</h3>
                 <p>Set reminders and organize your tasks to stay on track.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="pricing">
-        <h1>Pricing</h1>
-        <div class="pricing-grid" onclick="window.location.hash='back'; " id="pricing-grid">
-            <div class="pricing-card">
-                <h3>Free User</h3>
-                <p>Free users will have total access to our Product.</p>
             </div>
         </div>
     </section>

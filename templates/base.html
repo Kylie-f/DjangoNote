@@ -5,23 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlippiNote - Your Creative Space</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <script src="{% static 'js/scripts.js' %}"></script>
 </head>
 <body>
     <header class="header">
+        <img src="{% static 'img/logo.png' %}" alt="Logo" class="image">
         <div class="logo">FlippiNote</div>
         <nav>
-            <a href="{% url 'home' %}">Home</a>
-            <a href="#contact-us">Contact</a>
-            
+            {% if request.resolver_match.url_name != 'notes' %}
+                <a href="{% url 'home' %}">Home</a>
+                <a href="#feature-grid">Features</a>
+                <a href="#contact-us">Contact</a>
+            {% else %}
+            {% endif %}            
             {% if user.is_authenticated %}
             <form method="post" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button class="login-btn" type="submit">Logout</button>
+              {% csrf_token %}
+              <button class="login-btn" type="submit">
+                 Logout
+              </button>
             </form>
             {% else %}
             <button class="login-btn"><a href="{% url 'login' %}">Login</a></button>
             {% endif %}
+
         </nav>
     </header>
 

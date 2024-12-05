@@ -25,6 +25,8 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")), 
     path("accounts/", include("django.contrib.auth.urls")),
     path("notes/", include("notes.urls")),
+    path("signup/", include("accounts.urls")),
+    path("login/", include("accounts.urls")),
 ] + debug_toolbar_urls()
 
 
