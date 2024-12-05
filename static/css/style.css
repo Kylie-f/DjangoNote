@@ -25,21 +25,24 @@ header {
 .logo {
   font-size: 24px;
   font-weight: bold;
+  margin-left: 10px;
+}
+
+nav {
+  margin-left: auto;
 }
 
 nav a {
   color: #fff;
   text-decoration: none;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .login-btn {
-
   background-color: #fcc2e9;
   color: #000;
-
   border: none;
-  padding: 10px 20px;
+  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -238,15 +241,20 @@ footer nav a {
   background-color: #e6aed4;
 }
 
-/* Notes Dashboard */
 .notes-dashboard {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-wrap: wrap; /* Allow notes to wrap to the next line */
+  gap: 10px; /* Spacing between notes */
+  position: relative;
+  padding: 20px;
+  min-height: 500px;
+  border: none;
+  z-index: 9;
+  overflow: hidden; /* Prevent dragging items out of container */
 }
 
 .note-card {
-  background-color: #fdfd96; /* Sticky note color */
+  background-color: #fdfd96;
   border: 1px solid #f0e68c;
   border-radius: 5px;
   padding: 15px;
@@ -258,12 +266,21 @@ footer nav a {
   justify-content: center;
   align-items: center;
   text-align: center;
+  cursor: grab;
+  position: relative; /* Changed to relative for alignment with flex */
+  z-index: 5;
+}
+
+.note-card.dragging {
+  z-index: 9999;
+  cursor: grabbing;
 }
 
 .note-card p {
   font-size: 14px;
   color: #333;
 }
+
 
 /* Sticky note colors */
 .sticky-note-color-1 {
@@ -343,4 +360,28 @@ footer nav a {
 .sticky-note-color-5:hover {
   transform: scale(1.05);
   background-color: #e0e0e0; /* highlight effect */
+}
+
+.image {
+  width: 50px;
+  height: auto;
+  flex-shrink: 0;  /* Prevent images from shrinking */
+}
+
+.banner-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+}
+
+.banner-content {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.banner-content img {
+  width: 100px; /* Maintain a consistent image size */
+  height: auto;
+  flex-shrink: 0;
 }
