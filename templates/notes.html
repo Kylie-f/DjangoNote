@@ -16,19 +16,18 @@
         
     </aside>
 
-    <!-- Main Content Area -->
     <main class="main-content">
         <h1>Your Notes</h1>
         <button class="create-note-btn sticky-note-color-5">Create Note</button>
-
-        <!-- Notes Dashboard -->
-        <div class="notes-dashboard">
+    
+        <div class="notes-dashboard" id="notes-dashboard">
             {% for note in notes %}
-            <div class="note-card">
+            <div class="note-card" id="note-card-{{ note.id }}">
                 <p>{{ note.body }}</p>
             </div>
             {% endfor %}
         </div>
-    </main>
+    </main>    
+    
 </div>
 {% endblock content %}

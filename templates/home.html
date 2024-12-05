@@ -1,12 +1,23 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 <main>
     <section class="hero">
         <h1>Welcome to FlippiNote</h1>
         <p>Your space for creativity, organization, and collaboration.</p>
-        <button class="cta-btn">Get Started for Free</button>
+        <button class="cta-btn">
+            <a href="{% url 'signup' %}">Get Started for Free</a>
+        </button>
     </section>
+
+    <div class="banner-container">
+        <p>Some of our customers!</p>
+        <div class="banner-content">
+            <img src="{% static 'img/logo.png' %}" alt="Logo" class="image">
+            <img src="{% static 'img/logo.png' %}" alt="Logo" class="image">
+            <img src="{% static 'img/logo.png' %}" alt="Logo" class="image">
+        </div>
+      </div>
 
     <section class="features">
         <h2>Features</h2>
