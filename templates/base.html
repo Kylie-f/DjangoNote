@@ -12,11 +12,13 @@
         <div class="logo">FlippiNote</div>
         <nav>
             <a href="{% url 'home' %}">Home</a>
-            <a href="#feature-grid">Features</a>
-            <a href="#pricing-grid">Pricing</a>
             <a href="#contact-us">Contact</a>
+            
             {% if user.is_authenticated %}
-            <button class="login-btn"><a href="{% url 'logout' %}">Logout</a></button>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="login-btn" type="submit">Logout</button>
+            </form>
             {% else %}
             <button class="login-btn"><a href="{% url 'login' %}">Login</a></button>
             {% endif %}
