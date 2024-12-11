@@ -24,7 +24,9 @@ About the Project FlippiNote is a web application designed to make collaborative
 
 Features include:
 
-Secure user authentication Customizable note organization Responsive and visually appealing design
+- Secure user authentication
+- Customizable note organization Responsive
+- Visually appealing design
 
 Meet the Team: Nate Adams: Contributions:...... 
 Sydney Escobar: Contributions:...... 
