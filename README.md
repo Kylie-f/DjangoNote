@@ -28,6 +28,10 @@ Features include:
 - Customizable note organization Responsive
 - Visually appealing design
 
-Meet the Team: Nate Adams: Contributions:...... 
-Sydney Escobar: Contributions:...... 
-Kylie Fannin: Contributions: Crafted the visual design and layout of the website using extensive HTML and CSS, created tests for functionality, and prepared the final project presentation.
+Meet the Team: 
+- Nate Adams:
+    - Contributions:...... 
+- Sydney Escobar:
+    - Contributions:...... 
+- Kylie Fannin:
+    - Contributions: Crafted the visual design and layout of the website using extensive HTML and CSS, created tests for functionality, and prepared the final project presentation.
