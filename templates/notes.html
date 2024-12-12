@@ -18,13 +18,28 @@
 
     <main class="main-content">
         <h1>Your Notes</h1>
-        <button class="create-note-btn sticky-note-color-5">Create Note</button>
+        <button class="create-note-btn sticky-note-color-5"><a href="{% url 'add-note' %}">Create Note</a></button>
     
         <div class="notes-dashboard" id="notes-dashboard">
             {% for note in notes %}
-            <div class="note-card" id="note-card-{{ note.id }}">
-                <p>{{ note.body }}</p>
-            </div>
+            {% if note.owner == user or user in note.access %}
+                {% if note.text %}
+                <div class="note-card" id="note-card-{{ note.id }}">
+                    <p><strong>{{ note.title }}</strong><br />
+                    {{ note.text }}</p>
+                </div>
+                {% elif note.image %}
+                <div class="note-card" id="note-card-{{ note.id }}">
+                    <img alt="{{ note.title }}" src="{{ note.image.url }}"><br />
+                    <a href="{{ note.image.url }}">Download</a>
+                </div>
+                {% elif note.file %}
+                <div class="note-card" id="note-card-{{ note.id }}">
+                    <a href="{{ note.file.url }}">Download {{note.title}}</a>
+                </div>
+                {% endif%}
+            {% else %}
+            {% endif %}
             {% endfor %}
         </div>
     </main>    
