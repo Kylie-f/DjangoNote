@@ -189,13 +189,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 
-# MEDIA_URL = "/media/"
-MEDIA_URL = '/media/'
+MEDIA_URL = FORCE_SCRIPT_NAME + '/media/'
 if FORCE_SCRIPT_NAME != '':
     MEDIA_SERVE_URL = '/'.join(MEDIA_URL.split('/')[2:])
 else:
     MEDIA_SERVE_URL = MEDIA_URL
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_REDIRECT_URL = "notes" 
 LOGOUT_REDIRECT_URL = "home"
