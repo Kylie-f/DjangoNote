@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Collaborators</h2>
+{% for c in collab %}
+<div>
+    <p>{{c.name}}<br /><a href="mailto:{{c.email}}">{{c.email}}</a></p>
+</div>
+{% endfor %}
+{% endblock content %}

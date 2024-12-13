@@ -1,14 +1,15 @@
 {% extends "base.html" %}
+
 {% block content %}
 <div class="signup">
 <h2>Sign Up</h2>
-<<<<<<< Updated upstream
-<form method="post">{% csrf_token %}
-=======
 
 <form method="post">
     {% csrf_token %}
     
+
+    <!-- Display form errors -->
+
     {% if form.errors %}
     <div class="errorlist">
         <ul>
@@ -20,14 +21,11 @@
         </ul>
     </div>
     {% endif %}
+    <!-- Display form fields -->
 
->>>>>>> Stashed changes
     {{ form.as_p }}
+
     <button type="submit">Sign Up</button>
 </form>
-<<<<<<< Updated upstream
-{% endblock content %}
-=======
 </div>
 {% endblock content %}
->>>>>>> Stashed changes
