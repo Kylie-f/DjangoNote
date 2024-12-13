@@ -1,4 +1,5 @@
 /* Global Styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +14,7 @@ body {
 }
  
 /* Header Styles */
+
 header {
   background-color: #333;
   color: #fff;
@@ -48,6 +50,7 @@ nav a {
 }
 
 /* Hero Section Styles */
+
 .hero {
   background-color: #f0f0f0;
   padding: 80px 20px;
@@ -76,6 +79,7 @@ nav a {
 }
 
 /* Features Section Styles */
+
 .features {
   padding: 80px 20px;
 }
@@ -136,6 +140,7 @@ nav a {
 }
 
 /* Contact Styles */
+
 .contact {
   padding: 80px 20px;
 }
@@ -155,6 +160,7 @@ nav a {
 }
 
 /* Footer Styles */
+
 footer {
   background-color: #333;
   color: #fff;
@@ -171,13 +177,15 @@ footer nav a {
 /************************************************/
 
 /* Container layout */
+
 .container {
   display: flex;
-  height: calc(100vh - 60px); /* Full height minus header */
+  height: calc(100vh - 60px);
   overflow: hidden;
 }
 
 /* Sidebar styles */
+
 .sidebar {
   width: 200px;
   background-color: #333;
@@ -208,6 +216,7 @@ footer nav a {
 }
 
 /* Main content area */
+
 .main-content {
   flex: 1;
   padding: 20px;
@@ -243,14 +252,14 @@ footer nav a {
 
 .notes-dashboard {
   display: flex;
-  flex-wrap: wrap; /* Allow notes to wrap to the next line */
-  gap: 10px; /* Spacing between notes */
+  flex-wrap: wrap; 
+  gap: 10px;
   position: relative;
   padding: 20px;
   min-height: 500px;
   border: none;
   z-index: 9;
-  overflow: hidden; /* Prevent dragging items out of container */
+  overflow: hidden;
 }
 
 .note-card {
@@ -267,7 +276,7 @@ footer nav a {
   align-items: center;
   text-align: center;
   cursor: grab;
-  position: relative; /* Changed to relative for alignment with flex */
+  position: relative; 
   z-index: 5;
 }
 
@@ -281,10 +290,10 @@ footer nav a {
   color: #333;
 }
 
-
 /* Sticky note colors */
+
 .sticky-note-color-1 {
-  background-color: #fdfd96; /* Yellow sticky note */
+  background-color: #fdfd96;
   color: #333;
   padding: 10px;
   text-align: center;
@@ -298,7 +307,7 @@ footer nav a {
 }
 
 .sticky-note-color-2 {
-  background-color: #ffc6a9; /* Peach sticky note */
+  background-color: #ffc6a9;
   color: #333;
   padding: 10px;
   text-align: center;
@@ -312,7 +321,7 @@ footer nav a {
 }
 
 .sticky-note-color-3 {
-  background-color: #c2f0c2; /* Green sticky note */
+  background-color: #c2f0c2;
   color: #333;
   padding: 10px;
   text-align: center;
@@ -326,7 +335,7 @@ footer nav a {
 }
 
 .sticky-note-color-4 {
-  background-color: #a9d0ff; /* Blue sticky note */
+  background-color: #a9d0ff;
   color: #333;
   padding: 10px;
   text-align: center;
@@ -340,7 +349,7 @@ footer nav a {
 }
 
 .sticky-note-color-5 {
-  background-color: #fcc2e9; /* Pink sticky note for Create Note */
+  background-color: #fcc2e9;
   color: #333;
   padding: 10px 20px;
   text-align: center;
@@ -353,19 +362,20 @@ footer nav a {
 }
 
 /* Hover effect */
+
 .sticky-note-color-1:hover,
 .sticky-note-color-2:hover,
 .sticky-note-color-3:hover,
 .sticky-note-color-4:hover,
 .sticky-note-color-5:hover {
   transform: scale(1.05);
-  background-color: #e0e0e0; /* highlight effect */
+  background-color: #e0e0e0;
 }
 
 .image {
   width: 50px;
   height: auto;
-  flex-shrink: 0;  /* Prevent images from shrinking */
+  flex-shrink: 0;
 }
 
 .banner-container {
@@ -381,7 +391,97 @@ footer nav a {
 }
 
 .banner-content img {
-  width: 100px; /* Maintain a consistent image size */
+  width: 100px;
   height: auto;
   flex-shrink: 0;
+}
+
+/* Elements for Login, Logout, and edit notes pages */
+
+.login {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login h2 {
+  color: #000;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login .errorlist {
+  color: red;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.login button {
+  background-color: #ffc6a9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  align-self: center;
+  margin-top: 10px;
+}
+
+.login button:hover {
+  background-color: #000;
+  color: #FFF;
+}
+
+.signup {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.signup h2 {
+  color: #000;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signup form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup .errorlist {
+  color: red;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.signup button {
+  background-color: #ffc6a9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  align-self: center;
+  margin-top: 10px;
+}
+
+.signup button:hover {
+  background-color: #000;
+  color: #FFF;
 }

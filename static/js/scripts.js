@@ -1,41 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
+    //adds event listener for HTML page (dom content loaded) then starts the function
     const bannerContent = document.querySelector('.banner-content');
     const images = document.querySelectorAll('.banner-content img');
-    const imageWidth = images[0].offsetWidth; // Get the width of a single image
+    const imageWidth = images[0].offsetWidth;
     const imageCount = images.length;
     let currentIndex = 0;
+    //set variables and pull from HTML page
 
-    // Function to scroll the images one at a time
     function scrollToNextImage() {
         currentIndex++;
 
-        // Scroll to the next image
-        bannerContent.style.transition = 'transform 1s ease-in-out'; // Ensure smooth transition
-        bannerContent.style.transform = `translateX(-${currentIndex * imageWidth}px)`; // Move by the width of one image
+        bannerContent.style.transition = 'transform 1s ease-in-out'; 
+        bannerContent.style.transform = `translateX(-${currentIndex * imageWidth}px)`; 
 
-        // If all images have scrolled off-screen, reset to the first image
         if (currentIndex >= imageCount) {
             setTimeout(() => {
-                bannerContent.style.transition = 'none'; // Disable transition temporarily
-                bannerContent.style.transform = `translateX(0)`; // Reset position to the first image
-                // Move the first image to the end for seamless loop
+                bannerContent.style.transition = 'none';
+                bannerContent.style.transform = `translateX(0)`;
                 bannerContent.appendChild(bannerContent.firstElementChild);
                 currentIndex = 0;
                 setTimeout(() => {
-                    bannerContent.style.transition = 'transform 1s ease-in-out'; // Re-enable transition
-                }, 50); // Short delay to reset the transition
-            }, 1000); // Wait for the transition to finish before resetting
+                    bannerContent.style.transition = 'transform 1s ease-in-out';
+                }, 50);
+            }, 1000);
         }
     }
+    //scrolls to next image, itterates through each image and transitions between them from JS styles
 
-    // Scroll every 5 seconds
     setInterval(scrollToNextImage, 5000);
 
-    // Initial scroll to the first image (no immediate jump)
     scrollToNextImage();
+    //sets scrolling to 5000 milliseconds then calls function
 });
-
-
 
 //----------------------------------------------
  
@@ -47,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function dragElement(elmnt) {
+        //drag function
         let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        //Starting note position
 
         elmnt.onmousedown = dragMouseDown;
 
@@ -56,44 +52,39 @@ document.addEventListener("DOMContentLoaded", function () {
             e = e || window.event;
             e.preventDefault();
 
-            // Get the initial mouse cursor position
             pos3 = e.clientX;
             pos4 = e.clientY;
 
-            // Change position to absolute for dragging
             elmnt.style.position = 'absolute';
             elmnt.style.zIndex = '9999';
 
-            // Add dragging class
             elmnt.classList.add("dragging");
 
-            // Attach event listeners to move and release
             document.onmouseup = closeDragElement;
             document.onmousemove = elementDrag;
         }
+        //checks to see if cursor is down and dragging, then will call element drag
 
         function elementDrag(e) {
             e = e || window.event;
             e.preventDefault();
 
-            // Calculate new cursor position
             pos1 = pos3 - e.clientX;
             pos2 = pos4 - e.clientY;
             pos3 = e.clientX;
             pos4 = e.clientY;
 
-            // Update element position
             elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
             elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
         }
+        //drags element (div) accross background (div background)
 
         function closeDragElement() {
-            // Remove event listeners
             document.onmouseup = null;
             document.onmousemove = null;
 
-            // Remove dragging class
             elmnt.classList.remove("dragging");
         }
+        //ends the tag of dragging and sets location of note to where it is
     }
 });
