@@ -29,7 +29,7 @@ urlpatterns = [
     path("notes/", include("notes.urls")),
     path("signup/", include("accounts.urls")),
     path("login/", include("accounts.urls")),
-] + debug_toolbar_urls()
+] + static(settings.MEDIA_SERVE_URL, document_root=settings.MEDIA_ROOT)
 
 
 # if settings.DEBUG:
@@ -39,6 +39,9 @@ urlpatterns = [
 #     urlpatterns = [
 #     path('admin/', admin.site.urls),
 #     ] #+ debug_toolbar_urls()
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ]
