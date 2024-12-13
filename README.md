@@ -30,8 +30,8 @@ Features include:
 
 Meet the Team: 
 - Nate Adams:
-    - Contributions:...... 
+    - Contributions: Helped make shell of Notes and assisted with visual design and created javascript functions, and helped push project to UM Server.
 - Sydney Escobar:
-    - Contributions:...... 
+    - Contributions: Created accounts, merged accounts with notes. Made notes allow images, files, and text for users to upload either of these to a note.
 - Kylie Fannin:
     - Contributions: Crafted the visual design and layout of the website using extensive HTML and CSS, created tests for functionality, and prepared the final project presentation.
