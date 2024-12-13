@@ -165,14 +165,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-# URL path to serve static files from; ex: '/group1/static/'
+# settings.py
+
 STATIC_URL = FORCE_SCRIPT_NAME + "/static/"
-# project static files location
 STATICFILES_DIRS = [BASE_DIR / "static"]
-# collected static files location; includes other apps, like admin
 STATIC_ROOT = BASE_DIR / "staticfiles"
-# enable caching and compression when serving static files
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    }
+}
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
