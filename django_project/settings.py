@@ -22,9 +22,9 @@ env.read_env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 # Make sure you've initialized the `env` object!
 FORCE_SCRIPT_NAME = (
-	'/' + env.str('SITE_NAME', default=None)  # if the SITE_NAME env variable is set
-	if not env.str('SITE_NAME', default=None) # if not
-	else ''  # set to nothing to let Django take over
+    "/" + os.environ.get("SITE_NAME", "")
+    if os.environ.get("SITE_NAME", "") != ""
+    else ""
 )
 
 
@@ -166,21 +166,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 # URL path to serve static files from; ex: '/group1/static/'
-STATIC_URL = FORCE_SCRIPT_NAME + '/static/'
+STATIC_URL = FORCE_SCRIPT_NAME + "/static/"
 # project static files location
-STATICFILES_DIRS = [ BASE_DIR / "static" ]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 # collected static files location; includes other apps, like admin
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 # enable caching and compression when serving static files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    }
-}
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
